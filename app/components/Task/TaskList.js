@@ -14,19 +14,23 @@ export default function TaskList() {
     const route = useRoute();
     const [taskList, setTaskList] = useState(TaskData);
 
+    // Delete task by filtering it out based on its id
     const deleteTask = (id) => {
         setTaskList(taskList.filter((task) => task.id !== id));
     };
 
+    // Navigate to "AddTask" screen to add a new task
     const handleAddTask = () => {
         navigation.navigate("AddTask");
     };
 
+    // Navigate to "TaskDetails" screen to view the task details
     const handleTaskDetails = (task) => {
         navigation.navigate("TaskDetails", { task });
     };
 
     useEffect(() => {
+        // Add new task to the list when a new task is passed from the "AddTask" screen
         if (route.params?.newTask) {
             const newTask = route.params.newTask;
             setTaskList((prevList) => [...prevList, newTask]);
@@ -85,5 +89,5 @@ const styles = StyleSheet.create({
         borderRadius: 50,
         padding: 10,
         elevation: 5,
-      },
+    },
 });

@@ -8,7 +8,7 @@ export default function AddTaskScreen() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
 
-    // DropDown
+    // DropDown for task category
     const [open, setOpen] = useState(false);
     const [category, setCategory] = useState(null);
     const categoryItems = categories.map((item) => ({
@@ -16,7 +16,7 @@ export default function AddTaskScreen() {
         label: item.label,
     }));
 
-    // DateTimePicker
+    // DateTimePicker for task date
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
 
@@ -27,7 +27,7 @@ export default function AddTaskScreen() {
         hideDatePicker();
     };
 
-    // Add Task
+    // Submit task data
     const handleSubmit = () => {
         if (title && description && category && selectedDate) {
             const task = {
@@ -39,13 +39,13 @@ export default function AddTaskScreen() {
                 image: "",
             };
 
-            console.log(task);
+            console.log(task); // Logs the created task
             setTitle("");
             setDescription("");
             setCategory(null);
             setSelectedDate(null);
         } else {
-            alert("Please enter all fields");
+            alert("Please enter all fields"); // Alert if fields are empty
         }
     };
 
